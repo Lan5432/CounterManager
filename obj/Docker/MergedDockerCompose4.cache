@@ -1,0 +1,25 @@
+services:
+  countermanagerapi:
+    build:
+      context: C:\Users\Nico\Documents\Lan5432\Codigo\CSharp\CounterManagerWeb
+      dockerfile: CounterManagerApi/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: countermanagerapi
+    ports:
+    - target: 80
+  countermanagerweb:
+    build:
+      context: C:\Users\Nico\Documents\Lan5432\Codigo\CSharp\CounterManagerWeb
+      dockerfile: CounterManagerWeb/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: countermanagerweb
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\Nico\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Nico\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'

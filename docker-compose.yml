@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  countermanagerweb:
+    image: ${DOCKER_REGISTRY-}countermanagerweb
+    build:
+      context: .
+      dockerfile: CounterManagerWeb/Dockerfile
+
+  countermanagerapi:
+    image: ${DOCKER_REGISTRY-}countermanagerapi
+    build:
+      context: .
+      dockerfile: CounterManagerApi/Dockerfile
+
