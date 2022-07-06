@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  countermanagerweb:
+  counter-manager-web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
@@ -11,9 +11,17 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-  countermanagerapi:
+
+  counter-manager-db:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
+
+  database:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
 

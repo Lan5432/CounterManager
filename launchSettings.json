@@ -1,0 +1,34 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "counter-manager-api": "StartDebugging",
+        "counter-manager-db": "StartDebugging",
+        "counter-manager-web": "StartDebugging",
+        "database": "StartWithoutDebugging"
+      }
+    },
+    "Just DB": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "counter-manager-api": "DoNotStart",
+        "counter-manager-db": "DoNotStart",
+        "counter-manager-web": "DoNotStart",
+        "database": "StartWithoutDebugging"
+      }
+    },
+    "Db y Proyecto DB": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "counter-manager-api": "DoNotStart",
+        "counter-manager-db": "StartWithoutDebugging",
+        "counter-manager-web": "DoNotStart",
+        "database": "StartWithoutDebugging"
+      }
+    }
+  }
+}

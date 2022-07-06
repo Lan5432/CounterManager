@@ -12,15 +12,7 @@ namespace CounterManagerWeb.Pages {
 
         public async void OnGet()
         {
-            ViewData["Message"] = "Hello from webfrontend";
-
-            using (var client = new System.Net.Http.HttpClient()) {
-                // Call *mywebapi*, and display its response in the page
-                var request = new System.Net.Http.HttpRequestMessage();
-                request.RequestUri = new Uri("http://mywebapi/WeatherForecast");
-                var response = await client.SendAsync(request);
-                ViewData["Message"] += " and " + await response.Content.ReadAsStringAsync();
-            }
+            ViewData["Message"] = "Hello from dfaslpo`dasjopkdsajiondjaiosdsjioan";
         }
     }
 }

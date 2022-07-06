@@ -1,15 +1,40 @@
 version: '3.4'
 
 services:
-  countermanagerweb:
-    image: ${DOCKER_REGISTRY-}countermanagerweb
+  counter-manager-web:
+    image: ${DOCKER_REGISTRY-}counter-manager-web
+    ports:
+      - 8083:80
     build:
       context: .
       dockerfile: CounterManagerWeb/Dockerfile
 
-  countermanagerapi:
-    image: ${DOCKER_REGISTRY-}countermanagerapi
+  counter-manager-api:
+    image: ${DOCKER_REGISTRY-}counter-manager-api
+    ports:
+      - 8082:80
     build:
       context: .
       dockerfile: CounterManagerApi/Dockerfile
+    depends_on:
+      - counter-manager-db
 
+  counter-manager-db:
+    image: ${DOCKER_REGISTRY-}counter-manager-db
+    ports:
+      - 8081:80
+      - 9091:5285
+    build:
+      context: .
+      dockerfile: CounterManagerDb/Dockerfile
+
+  database:
+    image: ${DOCKER_REGISTRY-}database
+    container_name: database
+    ports:
+      - 3306:3306
+    build:
+      context: ./DbScripts
+      dockerfile: Dockerfile
+    env_file:
+      - DbScripts/env.list

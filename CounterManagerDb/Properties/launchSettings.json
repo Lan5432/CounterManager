@@ -4,19 +4,19 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:62362",
+      "applicationUrl": "http://localhost:53495",
       "sslPort": 0
     }
   },
   "profiles": {
-    "CounterManagerApi": {
+    "CounterManagerDb": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:8082",
+      "applicationUrl": "http://localhost:8081",
       "dotnetRunMessages": true
     },
     "IIS Express": {
@@ -27,10 +27,11 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Docker": {
+    "Docker (1)": {
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "DockerfileRunArguments": "--name=Counter-Manager-Db",
       "publishAllPorts": true
     }
   }
