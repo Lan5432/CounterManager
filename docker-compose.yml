@@ -3,30 +3,40 @@ version: '3.4'
 services:
   counter-manager-web:
     image: ${DOCKER_REGISTRY-}counter-manager-web
+    container_name: counter-manager-web
     ports:
-      - 8083:80
+      - 8083:8083
+      - 443:443
     build:
       context: .
       dockerfile: CounterManagerWeb/Dockerfile
+    environment:
+      ASPNETCORE_URLS: http://+:8083
 
   counter-manager-api:
     image: ${DOCKER_REGISTRY-}counter-manager-api
+    container_name: counter-manager-api
     ports:
-      - 8082:80
+      - 8082:8082
     build:
       context: .
       dockerfile: CounterManagerApi/Dockerfile
     depends_on:
       - counter-manager-db
+    environment:
+      ASPNETCORE_URLS: http://+:8082
+
 
   counter-manager-db:
     image: ${DOCKER_REGISTRY-}counter-manager-db
+    container_name: counter-manager-db
     ports:
-      - 8081:80
-      - 9091:5285
+      - 8081:8081
     build:
       context: .
       dockerfile: CounterManagerDb/Dockerfile
+    environment:
+      ASPNETCORE_URLS: http://+:8081
 
   database:
     image: ${DOCKER_REGISTRY-}database

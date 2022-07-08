@@ -29,6 +29,16 @@
         "counter-manager-web": "DoNotStart",
         "database": "StartWithoutDebugging"
       }
+    },
+    "Todo Backend": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "counter-manager-api": "StartWithoutDebugging",
+        "counter-manager-db": "StartWithoutDebugging",
+        "counter-manager-web": "DoNotStart",
+        "database": "StartWithoutDebugging"
+      }
     }
   }
 }
