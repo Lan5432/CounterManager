@@ -1,0 +1,19 @@
+﻿@using CounterManagerWeb.Api
+@model IEnumerable<Counter>
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    
+    <h2>Your stored counters</h2> 
+    @await Html.PartialAsync("ListCounters", Model)
+    
+
+    <h2>Add new counter</h2>
+    <div>
+        @await Html.PartialAsync("CreateCounter", new CounterModel())
+    </div>
+
+</div>

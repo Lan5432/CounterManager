@@ -2,12 +2,15 @@ using Microsoft.EntityFrameworkCore;
 using CounterManagerDb.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContext<CounterManagerDbContext>(options => {
         var connectionString = builder.Configuration.GetConnectionString("CounterManagerDbContext")
             ?? throw new InvalidOperationException("Connection string 'CounterManagerDbContext' not found.");
         options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
     }
 );
+
+
 
 // Add services to the container.
 

@@ -3,12 +3,12 @@
 
         Task<IList<Counter>> GetAllCounters();
 
-        Task<Counter> GetCounter(string id);
+        Task<Counter> GetCounter(long id);
 
-        Task<Counter> CreateCounter(CounterRequest request);
+        Task<Counter> CreateCounter(CounterModel request);
 
-        Task<Counter> UpdateCounter(string id, CounterRequest request);
+        Task<Counter> UpdateCounter(long id, CounterModel counter);
 
-        Task DeleteCounter(string id);
+        Task DeleteCounter(long id);
     }
 }

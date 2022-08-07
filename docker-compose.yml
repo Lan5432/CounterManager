@@ -10,8 +10,8 @@ services:
     build:
       context: .
       dockerfile: CounterManagerWeb/Dockerfile
-    environment:
-      ASPNETCORE_URLS: http://+:8083
+    depends_on:
+      - counter-manager-api
 
   counter-manager-api:
     image: ${DOCKER_REGISTRY-}counter-manager-api
@@ -23,8 +23,6 @@ services:
       dockerfile: CounterManagerApi/Dockerfile
     depends_on:
       - counter-manager-db
-    environment:
-      ASPNETCORE_URLS: http://+:8082
 
 
   counter-manager-db:
@@ -35,8 +33,6 @@ services:
     build:
       context: .
       dockerfile: CounterManagerDb/Dockerfile
-    environment:
-      ASPNETCORE_URLS: http://+:8081
 
   database:
     image: ${DOCKER_REGISTRY-}database

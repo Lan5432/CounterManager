@@ -1,0 +1,13 @@
+﻿@using CounterManagerWeb.Api
+@model CounterModel
+@{
+    <form method="post" asp-controller="Counter" asp-action="Create">
+        <label asp-for="Name">Name:</label>
+        <input type="text" name="Name" />
+
+        <label asp-for="Count">Count:</label>
+        <input type="number" name="Count" />
+
+        <input type="submit" />
+    </form>
+}

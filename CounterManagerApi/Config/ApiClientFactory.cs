@@ -3,7 +3,7 @@
 namespace CounterManagerApi.Config {
     public static class ApiClientFactory {
 
-        internal static void ConfigureHttpClient(HttpClient client, string host)
+        internal static void ConfigureHttpClient(HttpClient client)
         {
             ConfigureBasicHeaders(client);
         }

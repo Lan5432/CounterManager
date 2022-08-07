@@ -30,7 +30,7 @@ namespace CounterManagerDb.Controllers {
 
         // GET: api/Counters/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Counter>> GetCounter(int id)
+        public async Task<ActionResult<Counter>> GetCounter(long id)
         {
             if (_context.Counter == null) {
                 return NotFound();
@@ -47,7 +47,7 @@ namespace CounterManagerDb.Controllers {
         // POST: api/Counters
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Counter>> PostCounter(CounterRequest counter)
+        public async Task<ActionResult<Counter>> CreateCounter(CounterModel counter)
         {
             if (_context.Counter == null) {
                 return Problem("Entity set 'CounterManagerDbContext.Counter'  is null.");
@@ -62,11 +62,13 @@ namespace CounterManagerDb.Controllers {
         // PUT: api/Counters/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCounter(int id, CounterRequest counter)
+        public async Task<IActionResult> UpdateCounter(long id, CounterModel counter)
         {
             var dbCounter = await _context.Counter.FindAsync(id);
             if (dbCounter != null) {
-                _context.Entry(dbCounter).State = EntityState.Modified;
+                var dbEntry = _context.Entry(dbCounter);
+                dbEntry.State = EntityState.Modified;
+                dbEntry.CurrentValues.SetValues(counter);
             } else {
                 return NotFound();
             }
@@ -87,7 +89,7 @@ namespace CounterManagerDb.Controllers {
 
         // DELETE: api/Counters/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCounter(int id)
+        public async Task<IActionResult> DeleteCounter(long id)
         {
             if (_context.Counter == null) {
                 return NotFound();
@@ -103,7 +105,7 @@ namespace CounterManagerDb.Controllers {
             return NoContent();
         }
 
-        private bool CounterExists(int id)
+        private bool CounterExists(long id)
         {
             return (_context.Counter?.Any(e => e.Id == id)).GetValueOrDefault();
         }

@@ -5,6 +5,6 @@ namespace CounterManagerDb.Data {
     public record class Counter(string Name, int Count) {
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public long Id { get; set; }
     }
 }

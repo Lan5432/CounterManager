@@ -1,0 +1,16 @@
+﻿@using CounterManagerWeb.Api
+@model IEnumerable<Counter>
+@{
+    @foreach (var counter in Model) {
+        <form method="post" asp-controller="Counter" asp-action="Update" asp-route-id="@counter.Id">
+            <label asp-for="@counter.Name">Name:</label>
+            <input asp-for="@counter.Name"/>
+
+            <label asp-for="@counter.Count">Count:</label>
+            <input asp-for="@counter.Count"/>
+
+            <input type="submit" value="Update this counter"/>
+            <input type="submit" value="Delete this counter" asp-action="Delete" asp-controller="Counter" asp-route-id="@counter.Id"/>
+        </form>
+    }
+}

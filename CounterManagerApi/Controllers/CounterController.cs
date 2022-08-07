@@ -22,7 +22,7 @@ namespace CounterManagerApi.Controllers {
 
         // GET api/<CounterController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Counter>> GetCounter(string id)
+        public async Task<ActionResult<Counter>> GetCounter(long id)
         {
             try {
                 return await counterApi.GetCounter(id);
@@ -33,17 +33,19 @@ namespace CounterManagerApi.Controllers {
 
         // POST api/<CounterController>
         [HttpPost]
-        public async void CreateCounter([FromBody] CounterRequest newCounter)
+        public async Task<IActionResult> CreateCounter(CounterModel newCounter)
         {
-            await counterApi.CreateCounter(newCounter);
+            var created = await counterApi.CreateCounter(newCounter);
+            return CreatedAtAction("GetCounter", new { id = created.Id }, created);
         }
 
         // PUT api/<CounterController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<Counter>> UpdateCounter(string id, [FromBody] CounterRequest counter)
+        public async Task<IActionResult> UpdateCounter(long id, CounterModel counter)
         {
             try {
-                return await counterApi.UpdateCounter(id, counter);
+                var updated = await counterApi.UpdateCounter(id, counter);
+                return AcceptedAtAction("GetCounter", new { id = updated.Id }, updated);
             } catch (ArgumentException) {
                 return NotFound();
             }
@@ -51,7 +53,7 @@ namespace CounterManagerApi.Controllers {
 
         // DELETE api/<CounterController>/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCounter(string id)
+        public async Task<IActionResult> DeleteCounter(long id)
         {
             try {
                 await counterApi.DeleteCounter(id);

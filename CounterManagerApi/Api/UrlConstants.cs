@@ -3,7 +3,8 @@
 
         private const string BASE_URL = "api/";
 
-        public const string CounterApiUrl = BASE_URL + "Counter";
-        public static Func<string, string> CounterApiIdUrl = id => $"{CounterApiUrl}/{id}";
+        public const string CounterApiUrl = BASE_URL + "counter";
+
+        public static Func<long, string> CounterApiUrlById = id => $"{CounterApiUrl}/{id}";
     }
 }
