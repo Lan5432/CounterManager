@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Docker Compose": {
+    "Start all debugging": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
@@ -10,7 +10,7 @@
         "database": "StartWithoutDebugging"
       }
     },
-    "Just DB": {
+    "Just Database docker container": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
@@ -20,7 +20,7 @@
         "database": "StartWithoutDebugging"
       }
     },
-    "Db y Proyecto DB": {
+    "Database container and DB App": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
@@ -30,7 +30,7 @@
         "database": "StartWithoutDebugging"
       }
     },
-    "Todo Backend": {
+    "Database container, App and Api App": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {

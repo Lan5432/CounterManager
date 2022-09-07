@@ -7,9 +7,9 @@ using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
 
-namespace IntegrationTests {
+namespace IntegrationTests.MockServer {
     public class MockServer : IDisposable {
-        
+
         private readonly WireMockServer _server;
         private readonly IDictionary<MockEntry, string> _mockEntries;
         private readonly IDictionary<HttpMethod, Func<IRequestBuilder, IRequestBuilder>> methodToConfigureFunction =
@@ -20,7 +20,8 @@ namespace IntegrationTests {
                 { HttpMethod.Delete, (requestMatcher) => requestMatcher.UsingDelete() }
             };
 
-        public MockServer(int port) {
+        public MockServer(int port)
+        {
             _server = WireMockServer.Start(port);
             _mockEntries = new Dictionary<MockEntry, string>();
         }
@@ -46,7 +47,7 @@ namespace IntegrationTests {
         {
             var mockEntry = new MockEntry(path, method);
             string guid;
-            if(!_mockEntries.ContainsKey(mockEntry)) {
+            if (!_mockEntries.ContainsKey(mockEntry)) {
                 guid = Guid.NewGuid().ToString();
                 _mockEntries.Add(mockEntry, guid);
             } else {
@@ -60,7 +61,7 @@ namespace IntegrationTests {
             var entry = _server.LogEntries.LastOrDefault(
                 entry => entry.RequestMessage.Path.Contains(path) && entry.RequestMessage.Method.Equals(requestMethod.Method)
             );
-            if(entry == null) {
+            if (entry == null) {
                 throw new ArgumentException("No request found for these parameters");
             }
             return entry.RequestMessage;
