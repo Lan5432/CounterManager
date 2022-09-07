@@ -1,10 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CounterManagerWeb.Api {
-    public record struct Counter {
+    public record struct Counter(long Id, string Name, int Count) {
 
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public int Count { get; set; }
     }
 }

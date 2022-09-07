@@ -2,15 +2,15 @@
 @model IEnumerable<Counter>
 @{
     @foreach (var counter in Model) {
-        <form method="post" asp-controller="Counter" asp-action="Update" asp-route-id="@counter.Id">
+        <form id="modify-counter-@counter.Id" method="post" asp-controller="Counter" asp-action="Update" asp-route-id="@counter.Id">
             <label asp-for="@counter.Name">Name:</label>
-            <input asp-for="@counter.Name"/>
+            <input id="modify-counter-@counter.Id-name" asp-for="@counter.Name"/>
 
             <label asp-for="@counter.Count">Count:</label>
-            <input asp-for="@counter.Count"/>
+            <input id="modify-counter-@counter.Id-count" asp-for="@counter.Count"/>
 
-            <input type="submit" value="Update this counter"/>
-            <input type="submit" value="Delete this counter" asp-action="Delete" asp-controller="Counter" asp-route-id="@counter.Id"/>
+            <input id="modify-counter-@counter.Id-update" type="submit" value="Update this counter"/>
+            <input id="modify-counter-@counter.Id-delete" type="submit" value="Delete this counter" asp-action="Delete" asp-controller="Counter" asp-route-id="@counter.Id"/>
         </form>
     }
 }

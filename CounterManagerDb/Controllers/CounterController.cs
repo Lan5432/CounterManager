@@ -18,7 +18,7 @@ namespace CounterManagerDb.Controllers {
             _context = context;
         }
 
-        // GET: api/Counters
+        // GET: api/Counter
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Counter>>> GetCounter()
         {
@@ -28,7 +28,7 @@ namespace CounterManagerDb.Controllers {
             return await _context.Counter.ToListAsync();
         }
 
-        // GET: api/Counters/5
+        // GET: api/Counter/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Counter>> GetCounter(long id)
         {
@@ -44,7 +44,7 @@ namespace CounterManagerDb.Controllers {
             return counter;
         }
 
-        // POST: api/Counters
+        // POST: api/Counter
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Counter>> CreateCounter(CounterModel counter)
@@ -59,7 +59,7 @@ namespace CounterManagerDb.Controllers {
             return CreatedAtAction("GetCounter", new { id = dbCounter.Id }, dbCounter);
         }
 
-        // PUT: api/Counters/5
+        // PUT: api/Counter/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCounter(long id, CounterModel counter)
@@ -87,7 +87,7 @@ namespace CounterManagerDb.Controllers {
         }
 
 
-        // DELETE: api/Counters/5
+        // DELETE: api/Counter/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCounter(long id)
         {

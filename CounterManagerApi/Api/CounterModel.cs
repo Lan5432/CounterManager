@@ -1,13 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
+﻿
 namespace CounterManagerApi.Api {
-    public record class CounterModel {
-
-        public string? Name { get; set; }
-        public int? Count { get; set; }
-
-        public CounterModel()
-        {
-        }
+    public record struct CounterModel(string Name, int Count) {
     }
 }

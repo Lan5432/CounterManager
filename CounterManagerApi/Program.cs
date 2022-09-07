@@ -5,7 +5,7 @@ var services = builder.Services;
 // Add services to the container.
 
 services.AddControllers();
-services.AddRestClients(httpClient => {
+services.ConfigureDbApiHttpClient(httpClient => {
     var url = $"{builder.Configuration["Apis:CounterDb:Host"]}:{builder.Configuration["Apis:CounterDb:Port"]}/";
     httpClient.BaseAddress = new(url);
 });

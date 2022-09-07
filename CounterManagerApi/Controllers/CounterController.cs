@@ -57,7 +57,7 @@ namespace CounterManagerApi.Controllers {
         {
             try {
                 await counterApi.DeleteCounter(id);
-                return Ok();
+                return NoContent();
             } catch (ArgumentException) {
                 return NotFound();
             }
